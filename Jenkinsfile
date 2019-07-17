@@ -12,6 +12,11 @@ pipeline {
         sh 'pip install --trusted-host pypi.python.org -r requirements.txt'
       }
     }
+    stage('test') {
+      steps {
+        sh 'pytest /backend'
+      }
+    }
   }
   environment {
     PYTHONUNBUFFERED = '1'
