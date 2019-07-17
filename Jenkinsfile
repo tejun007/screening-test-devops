@@ -16,8 +16,7 @@ pip install --trusted-host pypi.python.org -r requirements.txt'''
     }
     stage('test') {
       steps {
-        sh '''ls
-pytest /backend'''
+        sh 'pytest backend'
       }
     }
   }
