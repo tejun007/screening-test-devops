@@ -15,9 +15,9 @@
           <string>overrides</string>
           <list>
             <string>GIT_BRANCH=master</string>
-            <string>GIT_COMMIT=1cafb0bd84cd8799ee140fd8628a45120b02468b</string>
+            <string>GIT_COMMIT=434b4d5004d9bfd66ec687cf2aa94c55c983c167</string>
             <string>GIT_LOCAL_BRANCH=master</string>
-            <string>GIT_PREVIOUS_COMMIT=1cafb0bd84cd8799ee140fd8628a45120b02468b</string>
+            <string>GIT_PREVIOUS_COMMIT=434b4d5004d9bfd66ec687cf2aa94c55c983c167</string>
             <string>GIT_URL=https://github.com/tejun007/screening-test-devops.git</string>
           </list>
         </entry>
@@ -25,7 +25,7 @@
       <isUnmodifiedBySanitization>true</isUnmodifiedBySanitization>
     </cps.a.ArgumentsActionImpl>
     <wf.a.TimingAction plugin="workflow-api@2.35">
-      <startTime>1563381214676</startTime>
+      <startTime>1563389657676</startTime>
     </wf.a.TimingAction>
   </actions>
 </Tag>

@@ -1,0 +1,11 @@
+commit fcf06b233bffd97fd7ff1ecddfd9e0bfa1d4c0ad
+tree 1a1281928f5b63d55a75f752830407646102b8bd
+parent 434b4d5004d9bfd66ec687cf2aa94c55c983c167
+author TaeJun Lee <tejun007@hotmail.com> 2019-07-18 04:02:49 +0900
+committer TaeJun Lee <tejun007@hotmail.com> 2019-07-18 04:02:49 +0900
+
+    UPDATE: move to workspace and install requirements
+
+
+
+:100644 100644 e026c8fd260241fe267a7712d0c9ce72867d3720 4b276a19451f38a72a18dcab5534a84198f72490 M	Jenkinsfile

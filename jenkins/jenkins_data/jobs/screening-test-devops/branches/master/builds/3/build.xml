@@ -15,14 +15,14 @@
         <head class="org.jenkinsci.plugins.github_branch_source.BranchSCMHead" plugin="github-branch-source@2.5.3">
           <name>master</name>
         </head>
-        <hash>390459c269bb2b27176c2cb9ffd91ea3faa78589</hash>
+        <hash>fcf06b233bffd97fd7ff1ecddfd9e0bfa1d4c0ad</hash>
       </revision>
     </jenkins.scm.api.SCMRevisionAction>
     <org.jenkinsci.plugins.workflow.libs.LibrariesAction plugin="workflow-cps-global-lib@2.14">
       <libraries/>
     </org.jenkinsci.plugins.workflow.libs.LibrariesAction>
     <org.jenkinsci.plugins.pipeline.modeldefinition.actions.ExecutionModelAction plugin="pipeline-model-definition@1.3.9">
-      <stagesUUID>280cf265-bbf7-456b-944e-6ae78b8af44f</stagesUUID>
+      <stagesUUID>9da191f7-e92c-4a42-81ae-e416484d1e36</stagesUUID>
       <stagesList>
         <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStages plugin="pipeline-model-api@1.3.9">
           <stages>
@@ -41,7 +41,34 @@
                               <key>script</key>
                             </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
                             <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
-                              <value class="string">pip install --trusted-host pypi.python.org -r requirements.txt</value>
+                              <value class="string">cd /var/jenkins_home/workspace/screening-test-devops_master
+ls
+pip install --trusted-host pypi.python.org -r requirements.txt</value>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                          </entry>
+                        </arguments>
+                      </args>
+                    </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                  </steps>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+              </branches>
+            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+              <name>test</name>
+              <branches>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                  <name>default</name>
+                  <steps>
+                    <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                      <name>sh</name>
+                      <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                        <arguments class="linked-hash-map">
+                          <entry>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <key>script</key>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                              <value class="string">pytest /backend</value>
                             </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
                           </entry>
                         </arguments>
@@ -52,7 +79,7 @@
               </branches>
             </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
           </stages>
-          <uuid>280cf265-bbf7-456b-944e-6ae78b8af44f</uuid>
+          <uuid>9da191f7-e92c-4a42-81ae-e416484d1e36</uuid>
         </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStages>
       </stagesList>
     </org.jenkinsci.plugins.pipeline.modeldefinition.actions.ExecutionModelAction>
@@ -62,7 +89,7 @@
           <string>master</string>
           <hudson.plugins.git.util.Build>
             <marked plugin="git-client@2.8.0">
-              <sha1>390459c269bb2b27176c2cb9ffd91ea3faa78589</sha1>
+              <sha1>fcf06b233bffd97fd7ff1ecddfd9e0bfa1d4c0ad</sha1>
               <branches class="singleton-set">
                 <hudson.plugins.git.Branch>
                   <sha1 reference="../../../sha1"/>
@@ -98,27 +125,48 @@
       </revisionStates>
     </org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState>
     <com.cloudbees.jenkins.plugins.bitbucket.FirstCheckoutCompletedInvisibleAction plugin="cloudbees-bitbucket-branch-source@2.4.5"/>
+    <org.jenkinsci.plugins.workflow.cps.EnvActionImpl plugin="workflow-cps@2.72">
+      <env class="tree-map"/>
+    </org.jenkinsci.plugins.workflow.cps.EnvActionImpl>
+    <org.jenkinsci.plugins.docker.commons.fingerprint.DockerFingerprintAction plugin="docker-commons@1.15">
+      <imageIDs>
+        <string>sha256:9a58cce9b09fab822c803138dca676c24c5644ce0a3c6a78418eb05fdb3f3f5a</string>
+      </imageIDs>
+    </org.jenkinsci.plugins.docker.commons.fingerprint.DockerFingerprintAction>
+    <org.jenkinsci.plugins.docker.workflow.ImageAction plugin="docker-workflow@1.18">
+      <names class="sorted-set">
+        <string>python:3.6.5</string>
+      </names>
+    </org.jenkinsci.plugins.docker.workflow.ImageAction>
   </actions>
   <queueId>7</queueId>
-  <timestamp>1563381694102</timestamp>
-  <startTime>1563381694116</startTime>
+  <timestamp>1563390173116</timestamp>
+  <startTime>1563390173132</startTime>
   <result>FAILURE</result>
-  <duration>10962</duration>
+  <duration>31997</duration>
   <charset>UTF-8</charset>
   <keepLog>false</keepLog>
   <execution class="org.jenkinsci.plugins.workflow.cps.CpsFlowExecution">
     <result>FAILURE</result>
     <script>pipeline {
   agent {
-    dockerfile {
-      filename &apos;backend/Dockerfile&apos;
+    docker {
+      image &apos;python:3.6.5&apos;
+      args &apos;-p 5000:5000&apos;
     }
 
   }
   stages {
     stage(&apos;build&apos;) {
       steps {
-        sh &apos;pip install --trusted-host pypi.python.org -r requirements.txt&apos;
+        sh &apos;&apos;&apos;cd /var/jenkins_home/workspace/screening-test-devops_master
+ls
+pip install --trusted-host pypi.python.org -r requirements.txt&apos;&apos;&apos;
+      }
+    }
+    stage(&apos;test&apos;) {
+      steps {
+        sh &apos;pytest /backend&apos;
       }
     }
   }
@@ -133,28 +181,28 @@
     <timings class="map">
       <entry>
         <string>flowNode</string>
-        <long>569368270</long>
+        <long>799414954</long>
       </entry>
       <entry>
         <string>classLoad</string>
-        <long>2022359515</long>
+        <long>2374085177</long>
       </entry>
       <entry>
         <string>run</string>
-        <long>2536721572</long>
+        <long>8682291782</long>
       </entry>
       <entry>
         <string>parse</string>
-        <long>167396945</long>
+        <long>162569450</long>
       </entry>
       <entry>
         <string>saveProgram</string>
-        <long>200804735</long>
+        <long>448669490</long>
       </entry>
     </timings>
     <sandbox>true</sandbox>
-    <iota>22</iota>
-    <head>1:22</head>
+    <iota>34</iota>
+    <head>1:34</head>
     <done>true</done>
     <resumeBlocked>false</resumeBlocked>
   </execution>
@@ -199,7 +247,7 @@
       </scm>
       <node></node>
       <workspace>/var/jenkins_home/workspace/screening-test-devops_master</workspace>
-      <changelogFile>/var/jenkins_home/jobs/screening-test-devops/branches/master/builds/3/changelog342817038514481048.xml</changelogFile>
+      <changelogFile>/var/jenkins_home/jobs/screening-test-devops/branches/master/builds/3/changelog1819716558167918496.xml</changelogFile>
       <pollingBaseline class="hudson.scm.SCMRevisionState$None" reference="../../../actions/org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState/revisionStates/entry/hudson.scm.SCMRevisionState_-None"/>
     </org.jenkinsci.plugins.workflow.job.WorkflowRun_-SCMCheckout>
   </checkouts>

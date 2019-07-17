@@ -1,0 +1,11 @@
+commit b372b90b9f548f8acf02579bd5a84c2d33917a02
+tree 5b3ea70d0957ac49eb1e2e7606ba2b3ed92197c1
+parent e83efb54f68de76ebbfe7817a7ef46f39ed98e00
+author TaeJun Lee <tejun007@hotmail.com> 2019-07-18 04:08:21 +0900
+committer TaeJun Lee <tejun007@hotmail.com> 2019-07-18 04:08:21 +0900
+
+    use ls command to check the current location
+
+
+
+:100644 100644 aee5410c2bd80cd47530df13c3f755a3bfee27b9 03ab648fd7ee2658cf31c9278dd74739636daea1 M	Jenkinsfile
