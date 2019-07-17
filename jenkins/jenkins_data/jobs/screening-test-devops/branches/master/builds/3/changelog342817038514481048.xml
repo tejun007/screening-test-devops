@@ -1,0 +1,11 @@
+commit 390459c269bb2b27176c2cb9ffd91ea3faa78589
+tree 5b16b0fcac2bb1d4ce4222a65c68d29d742b0417
+parent 1cafb0bd84cd8799ee140fd8628a45120b02468b
+author TaeJun Lee <tejun007@hotmail.com> 2019-07-18 01:41:30 +0900
+committer TaeJun Lee <tejun007@hotmail.com> 2019-07-18 01:41:30 +0900
+
+    change agent from docker to dockerfile
+
+
+
+:100644 100644 1dac9badfa876e73ff5bb7be48e0439fd3dacf84 f64f942b7ea172a4a93c9880e8911adca4825e15 M	Jenkinsfile
