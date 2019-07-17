@@ -9,7 +9,9 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'pip install --trusted-host pypi.python.org -r requirements.txt'
+        sh '''cd /var/jenkins_home/workspace/screening-test-devops_master
+ls
+pip install --trusted-host pypi.python.org -r requirements.txt'''
       }
     }
     stage('test') {
