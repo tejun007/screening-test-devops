@@ -18,8 +18,11 @@ services:
 
   jenkins:
     container_name: jenkins-blueocean
-    image: 'jenkinsci/blueocean:1.17.0'
+    build:
+      context: jenkins
+      dockerfile: Dockerfile
     user: root
+    image: jenkins-blueocean
     ports:
       - '5001:8080'
       - '5002:8443'
