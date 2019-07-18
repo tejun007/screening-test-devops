@@ -20,12 +20,10 @@ pipeline {
         sh 'pytest ./backend'
       }
     }
-    stage('deploy') {
+    stage('push') {
       steps {
-        sh '''docker-compose up -d
-docker-compose ps
-docker-compose down --volumes
-docker-compose push'''
+        sh '''docker build --tag screening-test-backend:latest ./backend/Dockerfile
+docker push tejunlee007/screening-test-backend'''
       }
     }
   }
