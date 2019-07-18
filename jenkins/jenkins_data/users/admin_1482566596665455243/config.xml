@@ -38,6 +38,24 @@
             </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
           </list>
         </entry>
+        <entry>
+          <com.cloudbees.plugins.credentials.domains.Domain>
+            <name>blueocean-git-domain</name>
+            <description>blueocean-git-domain to store credentials by BlueOcean</description>
+            <specifications>
+              <io.jenkins.blueocean.rest.impl.pipeline.credential.BlueOceanDomainSpecification plugin="blueocean-pipeline-scm-api@1.17.0"/>
+            </specifications>
+          </com.cloudbees.plugins.credentials.domains.Domain>
+          <list>
+            <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+              <scope>USER</scope>
+              <id>git:996e1f714b08e971ec79e3bea686287e66441f043177999a13dbc546d8fe402a</id>
+              <description>Git username/password for https://github.com/tejun007/screening-test-devops</description>
+              <username>tejun007</username>
+              <password>{AQAAABAAAAAQHZw3TVC9OjhCOWEHSFBKtSvfTF1bbCpVoCjmYpehgn0=}</password>
+            </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+          </list>
+        </entry>
       </domainCredentialsMap>
     </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
     <hudson.plugins.emailext.watching.EmailExtWatchAction_-UserProperty plugin="email-ext@2.66">
