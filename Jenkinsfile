@@ -1,4 +1,5 @@
 pipeline {
+  agent none
   stages {
     stage('build') {
       agent {
@@ -19,25 +20,14 @@ pipeline {
         sh 'pytest ./backend'
       }
     }
-    stage('build image') {
+    stage('push') {
       agent {
         docker {
-          image 'docker:latest'
+          image 'ubuntu:latest'
         }
       }
       steps {
-        script {
-          backendImage = docker.build registry + ':$BUILD_NUMBER'
-        }
-      }
-    }
-    stage('push image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
+        sh  './push.sh'
       }
     }
   }
