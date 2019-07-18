@@ -21,11 +21,6 @@ pipeline {
       }
     }
     stage('push') {
-      environment {
-        PYTHONUNBUFFERED = '1'
-        PATH = '$PATH:/backend'
-        PYTHONPATH = '$PYTHONPATH:/:/backend'
-      }
       steps {
         sh './push.sh'
       }
@@ -33,5 +28,7 @@ pipeline {
   }
   environment {
     PYTHONUNBUFFERED = '1'
+    PATH = '$PATH:/backend'
+    PYTHONPATH = '$PYTHONPATH:/:/backend'
   }
 }
