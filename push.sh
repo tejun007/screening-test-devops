@@ -23,6 +23,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 sudo usermod -aG docker $USER
 
+sudo systemctl restart docker
+
 docker build --tag screening-test-backend:latest ./backend/Dockerfile
 docker push tejunlee007/screening-test-backend
 
