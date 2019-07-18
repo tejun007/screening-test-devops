@@ -1,20 +1,27 @@
 pipeline {
-  agent {
-    docker {
-      image 'python:3.6.5'
-    }
-  }
+  agent none
   stages {
     stage('build') {
+      agent {
+        docker {
+          image 'python:3.6.5'
+        }
+      }
       steps {
         sh 'pip install --trusted-host pypi.python.org -r ./backend/requirements.txt'
       }
     }
     stage('test') {
+      agent {
+        docker {
+          image 'python:3.6.5'
+        }
+      }
       environment {
         CI = 'true'
       }
       steps {
+        sh 'pip install --trusted-host pypi.python.org -r ./backend/requirements.txt'
         sh 'pytest ./backend'
       }
     }
