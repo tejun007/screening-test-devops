@@ -21,8 +21,15 @@ pipeline {
       }
     }
     stage('push') {
+      agent {
+        dockerfile {
+          filename './backend/Dockerfile'
+        }
+
+      }
       steps {
-        sh './push.sh'
+        sh '''docker push tejunlee007/screening-test-backend
+'''
       }
     }
   }
