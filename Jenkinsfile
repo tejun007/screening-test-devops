@@ -22,14 +22,13 @@ pipeline {
     }
     stage('push') {
       agent {
-        dockerfile {
-          filename './backend/Dockerfile'
+        docker {
+          image 'ubuntu:latest'
         }
 
       }
       steps {
-        sh '''docker push tejunlee007/screening-test-backend
-'''
+        sh './push.sh'
       }
     }
   }
