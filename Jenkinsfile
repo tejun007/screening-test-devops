@@ -1,13 +1,12 @@
 pipeline {
-  agent none
+  agent {
+    docker {
+      image 'python:3.6.5'
+      args '-p 5000:5000'
+    }
+  }
   stages {
     stage('build') {
-      agent {
-        docker {
-          image 'python:3.6.5'
-          args '-p 5000:5000'
-        }
-      }
       steps {
         sh 'pip install --trusted-host pypi.python.org -r ./backend/requirements.txt'
       }
@@ -20,14 +19,18 @@ pipeline {
         sh 'pytest ./backend'
       }
     }
-    stage('push') {
-      agent {
-        docker {
-          image 'ubuntu:latest'
-        }
-      }
+    stage('build image') {
       steps {
         sh  './push.sh'
+      }
+    }
+    stage('push image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
       }
     }
   }
