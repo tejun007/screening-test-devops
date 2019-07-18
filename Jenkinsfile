@@ -21,6 +21,12 @@ pipeline {
       }
     }
     stage('push') {
+      agent {
+        dockerfile {
+          filename './backend/Dockerfile'
+        }
+
+      }
       steps {
         sh './push.sh'
       }
