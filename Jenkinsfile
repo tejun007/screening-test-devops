@@ -35,12 +35,11 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'pip install --trusted-host pypi.python.org -r ./backend/requirements.txt'
         sh 'pytest ./backend'
       }
     }
     stage('push') {
-      agent none
+      agent 'ubuntu:latest'
       steps {
         sh  './push.sh'
       }
