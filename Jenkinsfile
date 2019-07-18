@@ -19,18 +19,10 @@ pipeline {
         sh 'pytest ./backend'
       }
     }
-    stage('build image') {
+    stage('push') {
+      agent none
       steps {
         sh  './push.sh'
-      }
-    }
-    stage('push image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
       }
     }
   }
