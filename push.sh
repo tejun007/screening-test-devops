@@ -18,10 +18,13 @@
 #
 #apt-get install docker-ce docker-ce-cli containerd.io
 #
-#usermod -aG docker $USER
-#
-#systemctl restart docker
+usermod -aG docker $USER
+
+systemctl restart docker
 
 docker build --tag tejunlee007/screening-test-backend:latest ./backend
+
+docker login --username tejunlee007 --password
+
 docker push tejunlee007/screening-test-backend:latest
 
