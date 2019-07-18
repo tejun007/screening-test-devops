@@ -19,3 +19,18 @@ GET / 로 접근시 Hello World! 를 출력하는 서버를 만들고 GitHub mas
 
 ## 제출 기한
 하루
+
+## 과제 제출물 내용
+
+git repository: https://github.com/tejun007/screening-test-devops - 과제에 대한 구현 내용을 담은 repo
+
+api address: http://54.180.26.226:5000/
+
+jenkins address: http://54.180.26.226:5001 \
+id: admin \
+password: admin
+
+### 과제 결과 확인 방법 
+https://github.com/tejun007/screening-test-devops repo에서 backend 폴더의 api source code 수정 후 push 한 후 jenkins에서 동작을 확인하면 됩니다.
+
+
