@@ -27,8 +27,7 @@ pipeline {
         PYTHONPATH = '$PYTHONPATH:/:/backend'
       }
       steps {
-        sh '''docker build --tag screening-test-backend:latest ./backend/Dockerfile
-docker push tejunlee007/screening-test-backend'''
+        sh './push.sh'
       }
     }
   }
