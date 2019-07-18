@@ -20,6 +20,14 @@ pipeline {
         sh 'pytest ./backend'
       }
     }
+    stage('deploy') {
+      steps {
+        sh '''docker-compose up -d
+docker-compose ps
+docker-compose down --volumes
+docker-compose push'''
+      }
+    }
   }
   environment {
     PYTHONUNBUFFERED = '1'
