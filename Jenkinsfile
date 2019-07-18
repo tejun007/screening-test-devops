@@ -28,7 +28,8 @@ pipeline {
 
       }
       steps {
-        sh './push.sh'
+        sh '''docker push tejunlee007/screening-test-backend
+'''
       }
     }
   }
