@@ -1,4 +1,9 @@
 pipeline {
+  environment {
+    registry = 'tejunlee007/screening-test-backend'
+    registryCredential = 'dockerhub'
+    backendImage = ''
+  }
   agent none
   stages {
     stage('build') {
@@ -6,6 +11,11 @@ pipeline {
         docker {
           image 'python:3.6.5'
         }
+      }
+      environment {
+        PYTHONUNBUFFERED = '1'
+        PATH = '$PATH:/backend'
+        PYTHONPATH = '$PYTHONPATH:/:/backend'
       }
       steps {
         sh 'pip install --trusted-host pypi.python.org -r ./backend/requirements.txt'
@@ -18,6 +28,10 @@ pipeline {
         }
       }
       environment {
+        PYTHONUNBUFFERED = '1'
+        PATH = '$PATH:/backend'
+        PYTHONPATH = '$PYTHONPATH:/:/backend'
+
         CI = 'true'
       }
       steps {
@@ -31,14 +45,5 @@ pipeline {
         sh  './push.sh'
       }
     }
-  }
-  environment {
-    PYTHONUNBUFFERED = '1'
-    PATH = '$PATH:/backend'
-    PYTHONPATH = '$PYTHONPATH:/:/backend'
-
-    registry = 'tejunlee007/screening-test-backend'
-    registryCredential = 'dockerhub'
-    backendImage = ''
   }
 }
