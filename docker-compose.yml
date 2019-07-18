@@ -10,6 +10,9 @@ services:
       FLASK_DEBUG: 1
       FLASK_APP: ./run.py
       PYTHONUNBUFFERED: 1
+      PATH: $PATH:/backend
+      PYTHONPATH: $PYTHONPATH:/:/backend
+
     image: screening-test-backend
     ports:
       - "5000:5000"
@@ -30,3 +33,5 @@ services:
       - ./jenkins/jenkins_data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
       - $HOME:/home
+    command:
+      -
