@@ -6,22 +6,7 @@ pipeline {
   }
   agent none
   stages {
-    stage('build') {
-      agent {
-        docker {
-          image 'python:3.6.5'
-        }
-      }
-      environment {
-        PYTHONUNBUFFERED = '1'
-        PATH = '$PATH:/backend'
-        PYTHONPATH = '$PYTHONPATH:/:/backend'
-      }
-      steps {
-        sh 'pip install --trusted-host pypi.python.org -r ./backend/requirements.txt'
-      }
-    }
-    stage('test') {
+    stage('build & test') {
       agent {
         docker {
           image 'python:3.6.5'
@@ -34,8 +19,17 @@ pipeline {
 
         CI = 'true'
       }
-      steps {
-        sh 'pytest ./backend'
+      stages {
+        stage('build') {
+          steps {
+            sh 'pip install --trusted-host pypi.python.org -r ./backend/requirements.txt'
+          }
+        }
+        stage('test') {
+          steps {
+            sh 'pytest ./backend'
+          }
+        }
       }
     }
     stage('push') {
