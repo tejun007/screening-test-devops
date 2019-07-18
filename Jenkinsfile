@@ -20,9 +20,6 @@ pipeline {
       }
     }
     stage('build image') {
-      agent {
-        image 'ubuntu:latest'
-      }
       steps {
         script {
           backendImage = docker.build registry + ':$BUILD_NUMBER'
