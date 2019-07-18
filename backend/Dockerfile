@@ -8,6 +8,13 @@ WORKDIR /backend
 # copy current directory to /server in docker container
 ADD ./ /backend
 
+# Set Environment variables
+ENV PYTHONUNBUFFERED=1
+
+# Set PYTHON project path
+ENV PATH=$PATH:/backend
+ENV PYTHONPATH=$PYTHONPATH:/:/backend
+
 # execute everyone's favorite pip command, pip install -r
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
