@@ -1,2 +1,0 @@
-screening-test-devops/master
-screening-test-devops_master

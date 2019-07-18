@@ -127,3 +127,6 @@ dmypy.json
 
 # Credentials
 *.pem
+
+# jenkins data
+jenkins/jenkins_data
