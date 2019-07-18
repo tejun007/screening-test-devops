@@ -33,7 +33,5 @@ pipeline {
   }
   environment {
     PYTHONUNBUFFERED = '1'
-    PATH = '$PATH:/backend'
-    PYTHONPATH = '$PYTHONPATH:/:/backend'
   }
 }
