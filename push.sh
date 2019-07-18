@@ -23,5 +23,5 @@
 #systemctl restart docker
 
 docker build --tag screening-test-backend:latest ./backend
-docker push tejunlee007/screening-test-backend
+docker push tejunlee007/screening-test-backend:latest
 
