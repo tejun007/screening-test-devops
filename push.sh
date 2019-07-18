@@ -3,7 +3,4 @@ git add .
 git commit -m "merge dev to master"
 git push origin master
 
-docker rmi tejunlee007/screening-test-backend
-
-docker build --tag tejunlee007/screening-test-backend:latest ./backend
 docker push tejunlee007/screening-test-backend:latest
