@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-sudo apt-get update
+apt-get update
 
-sudo apt-get install \
+apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -10,20 +10,20 @@ sudo apt-get install \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-sudo apt-key fingerprint 0EBFCD88
+apt-key fingerprint 0EBFCD88
 
-sudo add-apt-repository \
+add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
-sudo apt-get update
+apt-get update
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+apt-get install docker-ce docker-ce-cli containerd.io
 
-sudo usermod -aG docker $USER
+usermod -aG docker $USER
 
-sudo systemctl restart docker
+systemctl restart docker
 
 docker build --tag screening-test-backend:latest ./backend/Dockerfile
 docker push tejunlee007/screening-test-backend
