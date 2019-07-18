@@ -15,6 +15,7 @@ services:
       - "5000:5000"
     volumes:
       - ./backend:/backend
+      - ./push.sh:/push.sh
 
   jenkins:
     container_name: jenkins-blueocean
