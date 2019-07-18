@@ -9,15 +9,15 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh '''
-            cd /var/jenkins_home/workspace/screening-test-devops_master/backend
-            pip install --trusted-host pypi.python.org -r requirements.txt
-           '''
+        sh 'pip install --trusted-host pypi.python.org -r ./backend/requirements.txt'
       }
     }
     stage('test') {
+      environment {
+        CI = 'true'
+      }
       steps {
-        sh 'pytest backend'
+        sh 'pytest ./backend'
       }
     }
   }
