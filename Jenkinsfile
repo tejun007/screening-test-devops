@@ -39,11 +39,7 @@ pipeline {
       }
     }
     stage('push') {
-      agent {
-        docker {
-          image 'docker:latest'
-        }
-      }
+      agent any
       steps {
         sh  './push.sh'
       }
