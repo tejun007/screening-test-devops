@@ -35,7 +35,7 @@ pipeline {
     stage('push') {
       agent {
         docker {
-          image 'ubuntu:latest'
+          image 'docker:latest'
         }
       }
       steps {
